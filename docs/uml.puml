@@ -1,0 +1,281 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+' =========================
+' ENUMS
+' =========================
+
+enum FuncaoJogador {
+    ENTRY
+    SUPPORT
+    AWP
+    IGL
+    LURKER
+}
+
+enum StatusPartida {
+    AGENDADA
+    EM_ANDAMENTO
+    FINALIZADA
+}
+
+enum TipoTorneio {
+    PONTOS_CORRIDOS
+    ELIMINACAO_SIMPLES
+}
+
+' =========================
+' CLASSE BASE
+' =========================
+
+abstract class Pessoa {
+    - id : int
+    - nome : str
+    - email : str
+
+    + to_dict() : dict
+    + from_dict(data : dict)
+}
+
+' =========================
+' ENTIDADES
+' =========================
+
+class Jogador {
+    - nickname : str
+    - funcao : FuncaoJogador
+    - kills : int
+    - deaths : int
+    - assists : int
+
+    + adicionar_kill()
+    + adicionar_death()
+    + adicionar_assist()
+
+    + to_dict() : dict
+    + from_dict(data : dict)
+}
+
+class Tecnico {
+    - estrategia : str
+
+    + to_dict() : dict
+    + from_dict(data : dict)
+}
+
+class Time {
+    - id : int
+    - nome : str
+    - pontuacao : int
+    - jogadores : list
+    - tecnico : Tecnico
+
+    + adicionar_jogador(jogador : Jogador)
+    + remover_jogador(jogador : Jogador)
+
+    + to_dict() : dict
+    + from_dict(data : dict)
+}
+
+class Partida {
+    - id : int
+    - time_a : Time
+    - time_b : Time
+    - placar_a : int
+    - placar_b : int
+    - status : StatusPartida
+    - vencedor : Time
+
+    + iniciar_partida()
+    + finalizar_partida()
+
+    + definir_vencedor()
+
+    + to_dict() : dict
+    + from_dict(data : dict)
+}
+
+class Torneio {
+    - id : int
+    - nome : str
+    - tipo : TipoTorneio
+    - times : list
+    - partidas : list
+    - campeao : Time
+
+    + adicionar_time(time : Time)
+    + gerar_partidas()
+    + definir_campeao()
+
+    + to_dict() : dict
+    + from_dict(data : dict)
+}
+
+class Ranking {
+    - time : Time
+    - vitorias : int
+    - derrotas : int
+    - pontos : int
+
+    + atualizar_pontuacao()
+
+    + to_dict() : dict
+    + from_dict(data : dict)
+}
+
+class Estatistica {
+    - jogador : Jogador
+    - partidas_jogadas : int
+    - mvps : int
+    - kd_ratio : float
+
+    + calcular_kd()
+
+    + to_dict() : dict
+    + from_dict(data : dict)
+}
+
+' =========================
+' SERVICES
+' =========================
+
+class JogadorService {
+    + cadastrar_jogador()
+    + atualizar_estatisticas()
+}
+
+class TimeService {
+    + criar_time()
+    + adicionar_jogador()
+    + validar_quantidade_jogadores()
+}
+
+class PartidaService {
+    + registrar_resultado()
+    + atualizar_estatisticas()
+}
+
+class TorneioService {
+    + criar_torneio()
+    + gerar_confrontos()
+    + finalizar_torneio()
+}
+
+class RankingService {
+    + atualizar_ranking()
+    + calcular_pontos()
+}
+
+class EstatisticaService {
+    + calcular_kd()
+    + calcular_mvp()
+}
+
+' =========================
+' REPOSITORIES
+' =========================
+
+class JogadorRepository {
+    + salvar()
+    + listar()
+    + buscar_por_id()
+    + deletar()
+}
+
+class TimeRepository {
+    + salvar()
+    + listar()
+    + buscar_por_id()
+    + deletar()
+}
+
+class PartidaRepository {
+    + salvar()
+    + listar()
+    + buscar_por_id()
+    + deletar()
+}
+
+class TorneioRepository {
+    + salvar()
+    + listar()
+    + buscar_por_id()
+    + deletar()
+}
+
+' =========================
+' PERSISTENCIA
+' =========================
+
+class JsonManager {
+    + ler(caminho : str)
+    + escrever(caminho : str, dados : dict)
+}
+
+' =========================
+' UTILS
+' =========================
+
+class IdGenerator {
+    + generate_id()
+}
+
+class Validators {
+    + validar_email()
+    + validar_nickname()
+}
+
+class TimeLotadoException
+
+' =========================
+' HERANCA
+' =========================
+
+Pessoa <|-- Jogador
+Pessoa <|-- Tecnico
+
+' =========================
+' COMPOSICAO / ASSOCIACOES
+' =========================
+
+Time *-- "1..5" Jogador
+Time *-- "1" Tecnico
+
+Partida --> Time : time_a
+Partida --> Time : time_b
+Partida --> Time : vencedor
+
+Torneio *-- "1..*" Time
+Torneio *-- "1..*" Partida
+
+Ranking --> Time
+
+Estatistica --> Jogador
+
+Jogador --> FuncaoJogador
+Partida --> StatusPartida
+Torneio --> TipoTorneio
+
+' =========================
+' SERVICES DEPENDENCIAS
+' =========================
+
+JogadorService --> JogadorRepository
+TimeService --> TimeRepository
+PartidaService --> PartidaRepository
+TorneioService --> TorneioRepository
+
+RankingService --> Ranking
+EstatisticaService --> Estatistica
+
+' =========================
+' REPOSITORIES DEPENDENCIAS
+' =========================
+
+JogadorRepository --> JsonManager
+TimeRepository --> JsonManager
+PartidaRepository --> JsonManager
+TorneioRepository --> JsonManager
+
+@enduml

@@ -1,0 +1,14 @@
+[
+    {
+        "id": 109853,
+        "nome": "JJ",
+        "tecnico": {
+            "id": 1030,
+            "nome": "Jorge",
+            "email": "jorge.treinador@gmail.com.br",
+            "estrategia": "agressiva"
+        },
+        "jogadores": [],
+        "pontuacao": 0
+    }
+]
