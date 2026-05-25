@@ -1,35 +1,47 @@
-# Cache Python
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[codz]
+*$py.class
+*.so
 
-# Ambiente virtual
+# Virtual environments
+.env
+.envrc
 venv/
-.env/
+.venv/
+env/
+ENV/
 
-# VSCode
-.vscode/
-
-# PyCharm
-.idea/
-
-# Sistema operacional
-.DS_Store
-Thumbs.db
+# Build / distribution
+build/
+dist/
+.eggs/
+*.egg-info/
 
 # Logs
 *.log
 
-# Arquivos temporários
-*.tmp
-
-# Testes
+# Testing
 .pytest_cache/
-
-# Cobertura de testes
-htmlcov/
 .coverage
+htmlcov/
 
 # Jupyter
 .ipynb_checkpoints/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Type checkers / caches
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.pytype/
+
+# Temporary files
+*.tmp
