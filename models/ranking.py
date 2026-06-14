@@ -35,9 +35,6 @@ class Ranking:
             "pontos": self.__pontos
         }
     
-    @property
-    def id(self):
-        return self.__id
 
     @staticmethod
     def from_dict(data):

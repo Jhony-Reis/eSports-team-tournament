@@ -28,10 +28,6 @@ class Pessoa(ABC):
     def email(self, email: str):
         self._email = email
 
-    @property
-    def id(self):
-        return self._id
-
     def to_dict(self):
         return {
             "id": self._id,

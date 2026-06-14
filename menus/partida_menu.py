@@ -70,7 +70,7 @@ def menu_partida():
                         time_b
                     )
 
-                    service._PartidaService__repository.salvar(
+                    service.criar_partida(
                         partida
                     )
 

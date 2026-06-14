@@ -46,9 +46,6 @@ class Estatistica:
             "mvps": self.__mvps
         }
     
-    @property
-    def id(self):
-        return self.__id
 
     @staticmethod
     def from_dict(data):

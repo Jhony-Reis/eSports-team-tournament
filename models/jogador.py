@@ -62,9 +62,6 @@ class Jogador(Pessoa):
             "assists": self.__assists
         }
     
-    @property
-    def id(self):
-        return self.__id
 
     @staticmethod
     def from_dict(data):

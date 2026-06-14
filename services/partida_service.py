@@ -39,6 +39,10 @@ class PartidaService:
         self.__repository.atualizar(
             partida
         )
+    def criar_partida(self, partida: Partida):
+        self.__repository.salvar(
+            partida
+        )
 
     def finalizar_partida(
         self,

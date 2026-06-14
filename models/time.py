@@ -63,9 +63,6 @@ class Time:
             "pontuacao": self.__pontuacao
         }
     
-    @property
-    def id(self):
-        return self.__id
 
     @staticmethod
     def from_dict(data):
