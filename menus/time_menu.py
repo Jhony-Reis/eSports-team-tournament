@@ -25,6 +25,7 @@ def menu_time():
         print("1 - Criar time")
         print("2 - Listar times")
         print("3 - Adicionar jogador")
+        print("4 - Remover jogador")
         print("0 - Voltar")
 
         opcao = input("\nEscolha: ")
@@ -85,6 +86,7 @@ def menu_time():
 
                 for time in times:
                     print(time)
+                    print("-" * 20)
 
             case "3":
 
@@ -128,6 +130,53 @@ def menu_time():
 
                     print(
                         "\nJogador adicionado."
+                    )
+
+                except Exception as e:
+                    print(f"\nErro: {e}")
+
+            case "4":
+
+                try:
+
+                    time_id = int(
+                        input("ID do time: ")
+                    )
+
+                    jogador_id = int(
+                        input("ID do jogador: ")
+                    )
+
+                    time = service.buscar_time(
+                        time_id
+                    )
+
+                    jogador = (
+                        jogador_repository
+                        .buscar_por_id(
+                            jogador_id
+                        )
+                    )
+
+                    if not time:
+                        print(
+                            "\nTime não encontrado."
+                        )
+                        continue
+
+                    if not jogador:
+                        print(
+                            "\nJogador não encontrado."
+                        )
+                        continue
+
+                    service.remover_jogador(
+                        time,
+                        jogador
+                    )
+
+                    print(
+                        "\nJogador removido."
                     )
 
                 except Exception as e:

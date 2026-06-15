@@ -19,6 +19,7 @@ def menu_jogador():
 
         print("1 - Cadastrar jogador")
         print("2 - Listar jogadores")
+        print("3 - Excluir jogador")
         print("0 - Voltar")
 
         opcao = input("\nEscolha: ")
@@ -75,6 +76,15 @@ def menu_jogador():
 
                 for jogador in jogadores:
                     print(jogador)
+
+            case "3":
+
+                try:
+                    id = int(input("ID do jogador para excluir: "))
+                    service.deletar_jogador(id)
+                    print("\nJogador excluído.")
+                except Exception as e:
+                    print(f"\nErro: {e}")
 
             case "0":
                 break

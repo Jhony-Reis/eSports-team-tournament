@@ -1,1 +1,42 @@
-[]
+[
+    {
+        "id": 9,
+        "nome": "Jhon",
+        "email": "jhon@hotmail.com",
+        "nickname": "Jhonn",
+        "funcao": "SUPPORT",
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0
+    },
+    {
+        "id": 7,
+        "nome": "Tadeu",
+        "email": "tadeu@hotmail.com",
+        "nickname": "tata",
+        "funcao": "ENTRY",
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0
+    },
+    {
+        "id": 1,
+        "nome": "Jhon",
+        "email": "jhon@hotmail.com",
+        "nickname": "Jhon",
+        "funcao": "ENTRY",
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0
+    },
+    {
+        "id": 2,
+        "nome": "mateus",
+        "email": "ma@hotmail.com",
+        "nickname": "mama",
+        "funcao": "AWP",
+        "kills": 0,
+        "deaths": 0,
+        "assists": 0
+    }
+]

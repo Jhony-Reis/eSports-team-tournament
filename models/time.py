@@ -43,9 +43,14 @@ class Time:
         if len(self.__jogadores) >= 5:
             raise Exception("O time já possui 5 jogadores.")
 
+        if jogador in self.__jogadores:
+            raise Exception("Jogador já pertence ao time.")
+
         self.__jogadores.append(jogador)
 
     def remover_jogador(self, jogador: Jogador):
+        if jogador not in self.__jogadores:
+            raise Exception("Jogador não pertence ao time.")
         self.__jogadores.remove(jogador)
 
     def adicionar_pontos(self, pontos: int):
@@ -84,4 +89,13 @@ class Time:
         return time
 
     def __str__(self):
-        return f"{self.__nome} ({len(self.__jogadores)} jogadores)"
+        jogadores = ", ".join(
+        jogador.nickname
+        for jogador in self.__jogadores )
+
+        return (
+            f"Time: {self.__nome}\n"
+            f"Técnico: {self.__tecnico.nome}\n"
+            f"Jogadores: {jogadores}\n"
+            f"Pontos: {self.__pontuacao}"
+        )

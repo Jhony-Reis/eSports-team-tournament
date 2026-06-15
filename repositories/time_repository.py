@@ -16,6 +16,12 @@ class TimeRepository:
 
     def salvar(self, time: Time):
 
+        if self.buscar_por_id(time.id):
+
+            raise ValueError(
+                f"Já existe um time com ID {time.id}."
+            )
+
         times = JsonManager.ler(TIMES_JSON)
 
         times.append(time.to_dict())

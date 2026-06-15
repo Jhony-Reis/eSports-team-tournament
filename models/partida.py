@@ -29,6 +29,14 @@ class Partida:
     @property
     def vencedor(self):
         return self.__vencedor
+    
+    @property
+    def time_a(self):
+        return self.__time_a
+
+    @property
+    def time_b(self):
+        return self.__time_b
 
     def iniciar_partida(self):
         self.__status = StatusPartida.EM_ANDAMENTO

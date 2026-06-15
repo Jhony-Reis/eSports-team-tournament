@@ -1,1 +1,55 @@
-[]
+[
+    {
+        "id": 200,
+        "time_a": {
+            "id": 10,
+            "nome": "JJ",
+            "tecnico": {
+                "id": 20,
+                "nome": "Paulo",
+                "email": "o@hotmail.com",
+                "estrategia": "agressivo"
+            },
+            "jogadores": [
+                {
+                    "id": 1,
+                    "nome": "Jhon",
+                    "email": "jhon@hotmail.com",
+                    "nickname": "Jhon",
+                    "funcao": "ENTRY",
+                    "kills": 0,
+                    "deaths": 0,
+                    "assists": 0
+                }
+            ],
+            "pontuacao": 0
+        },
+        "time_b": {
+            "id": 11,
+            "nome": "GG",
+            "tecnico": {
+                "id": 21,
+                "nome": "Thais",
+                "email": "t@gmail.com",
+                "estrategia": "defensiva"
+            },
+            "jogadores": [
+                {
+                    "id": 2,
+                    "nome": "mateus",
+                    "email": "ma@hotmail.com",
+                    "nickname": "mama",
+                    "funcao": "AWP",
+                    "kills": 0,
+                    "deaths": 0,
+                    "assists": 0
+                }
+            ],
+            "pontuacao": 0
+        },
+        "placar_a": 0,
+        "placar_b": 0,
+        "status": "AGENDADA",
+        "vencedor": null
+    }
+]

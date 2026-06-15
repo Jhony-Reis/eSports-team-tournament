@@ -29,6 +29,7 @@ def menu_torneio():
         print("2 - Listar torneios")
         print("3 - Adicionar time")
         print("4 - Gerar confrontos")
+        print("5 - Listar confrontos")
         print("0 - Voltar")
 
         opcao = input("\nEscolha: ")
@@ -44,21 +45,24 @@ def menu_torneio():
                         "Nome torneio: "
                     )
 
-                    print(
-                        "\nTipos disponíveis:"
-                    )
+                    print("\nTipos disponíveis:")
+                    print("1 - Pontos Corridos")
+                    print("2 - Eliminação Simples")
 
-                    print(
-                        "PONTOS_CORRIDOS"
-                    )
+                    opcao_tipo = input("Escolha o tipo: ")
 
-                    print(
-                        "ELIMINACAO_SIMPLES"
-                    )
+                    if opcao_tipo == "1":
+                        tipo = TipoTorneio.PONTOS_CORRIDOS
 
-                    tipo = TipoTorneio(
-                        input("Tipo: ").upper()
-                    )
+                    elif opcao_tipo == "2":
+                        tipo = TipoTorneio.ELIMINACAO_SIMPLES
+
+                    else:
+                        raise ValueError("Tipo inválido.")
+
+                    # tipo = TipoTorneio(
+                    #     input("Tipo: ").upper()
+                    # )
 
                     torneio = Torneio(
                         id,
@@ -171,6 +175,42 @@ def menu_torneio():
                     print(
                         "\nConfrontos gerados."
                     )
+
+                except Exception as e:
+                    print(f"\nErro: {e}")
+
+            case "5":
+
+                try:
+
+                    torneio_id = int(
+                        input("ID torneio: ")
+                    )
+
+                    torneio = (
+                        service.buscar_torneio(
+                            torneio_id
+                        )
+                    )
+
+                    if not torneio:
+                        print(
+                            "\nTorneio não encontrado."
+                        )
+                        continue
+
+                    if not torneio.partidas:
+                        print(
+                            "\nNenhum confronto gerado."
+                        )
+                        continue
+
+                    print("\n=== CONFRONTOS ===")
+
+                    for partida in torneio.partidas:
+
+                        for partida in torneio.partidas:
+                            print(partida)
 
                 except Exception as e:
                     print(f"\nErro: {e}")

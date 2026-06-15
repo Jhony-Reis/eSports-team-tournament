@@ -1,14 +1,48 @@
 [
     {
-        "id": 109853,
+        "id": 10,
         "nome": "JJ",
         "tecnico": {
-            "id": 1030,
-            "nome": "Jorge",
-            "email": "jorge.treinador@gmail.com.br",
-            "estrategia": "agressiva"
+            "id": 20,
+            "nome": "Paulo",
+            "email": "o@hotmail.com",
+            "estrategia": "agressivo"
         },
-        "jogadores": [],
+        "jogadores": [
+            {
+                "id": 1,
+                "nome": "Jhon",
+                "email": "jhon@hotmail.com",
+                "nickname": "Jhon",
+                "funcao": "ENTRY",
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0
+            }
+        ],
+        "pontuacao": 0
+    },
+    {
+        "id": 11,
+        "nome": "GG",
+        "tecnico": {
+            "id": 21,
+            "nome": "Thais",
+            "email": "t@gmail.com",
+            "estrategia": "defensiva"
+        },
+        "jogadores": [
+            {
+                "id": 2,
+                "nome": "mateus",
+                "email": "ma@hotmail.com",
+                "nickname": "mama",
+                "funcao": "AWP",
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0
+            }
+        ],
         "pontuacao": 0
     }
 ]
